@@ -1,0 +1,20 @@
+A propriedade display é a mais importante do css para controlar layout.
+
+Tipos mais comuns de display:
+- block
+- inline
+- none
+
+O elemento de bloco se expande para esquerda e direita o tanto
+quanto for possível.
+
+Cada elemento tem um valor padrão de display.
+Os mais comuns são:
+- <p>
+- <div>
+- <form>
+- <header>
+- <footer>
+- <section>
+
+
