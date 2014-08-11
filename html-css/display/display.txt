@@ -1,0 +1,27 @@
+A propriedade display é a mais importante do css para controlar layout.
+
+Tipos mais comuns de display:
+- block
+- inline
+- none
+
+O elemento de bloco se expande para esquerda e direita o tanto
+quanto for possível.
+
+Cada elemento tem um valor padrão de display.
+Os mais comuns em block são:
+- <p>
+- <div>
+- <form>
+- <header>
+- <footer>
+- <section>
+
+O elemento de linha mais padrão é o <span>, ele é usado no meio
+de textos <span> por exemplo </span> sem quebrar o fluxo do
+parágafo. Assim também como o elemento <a>, para links.
+
+Outro valor comum do display é o none. Ele serve para esconder
+e exibir elementos sem realmente remove-los ou recriá-los. Ele
+é diferente da propriedade visibility com o valor hidden, pois
+dessa maneira o elemento continua ocupando espaço na tela.
