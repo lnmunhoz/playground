@@ -1,0 +1,5 @@
+Um dos maiores problemas da propriedade width é
+o box model. O tamanho do elemento pode ser maior
+do que foi definido na largura, pois as bordas e
+o preenchimento (border e padding) esticarão o
+elemento além da largura estabelecida.
