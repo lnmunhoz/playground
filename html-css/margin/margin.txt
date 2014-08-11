@@ -1,0 +1,15 @@
+Definir a largura (width) do elemento previne que ele se
+estique até as duas extremidades da página. Logo,
+é possivel modificar as margens dos dois lados
+onde o elemento está contido. Assim, o elemento
+irá ocupar a largura especificada e o espaço
+restante será dividido igualmente entre as
+duas margens.
+
+Mas, em casos onde a janela do navegador é menor que
+a largura do elemento, o browser cria uma barra de
+rolagem para resolver esse problema. Mas isso não
+é legal. O correto é utilizar o max-width. Assim,
+o elemento se ajustará de acordo com o tamanho da
+janela, e quando a mesma for maior, ira se estabilizar
+no tamanho máximo definido.

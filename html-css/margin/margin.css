@@ -1,0 +1,12 @@
+#width{
+    margin:5px auto;
+    width: 600px;
+    border: 2px solid gray;
+}
+
+#max-width{
+    margin:0 auto;
+    max-width: 600px;
+    border:2px solid gray;
+}
+
