@@ -1,0 +1,11 @@
+Comandos do git
+
+Criar uma nova branch
+> git checkout -b branch_name
+
+Ir para um commit especifico
+> git checkout commit_id
+
+Dar merge em duas branch.
+No caso, movendo para a master.
+[master]> git rebase branch_name
