@@ -6,6 +6,8 @@ Criar uma nova branch
 Ir para um commit especifico
 > git checkout commit_id
 
-Dar merge em duas branch.
-No caso, movendo para a master.
+Dar merge em duas branch. No caso, movendo para a master.
 [master]> git rebase branch_name
+
+Remover um arquivo apenas do repositório e não do work directory.
+> git rm --cached <file>
