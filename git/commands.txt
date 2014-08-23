@@ -1,5 +1,9 @@
 Comandos do git
 
+Adiciona todos os arquivos e já commita.
+> git commit -a -m "message"
+
+
 Criar uma nova branch
 > git checkout -b <branch_name>
 
