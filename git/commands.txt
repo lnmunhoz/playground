@@ -1,13 +1,20 @@
 Comandos do git
 
-Criar uma nova branch
-> git checkout -b branch_name
+Adiciona todos os arquivos e já commita.
+> git commit -a -m "message"
 
-Ir para um commit especifico
-> git checkout commit_id
+
+Criar uma nova branch
+> git checkout -b <branch_name>
+
+Ir para um commit específico
+> git checkout <commit_id>
 
 Dar merge em duas branch. No caso, movendo para a master.
-[master]> git rebase branch_name
+[master]> git rebase <branch_name>
 
 Remover um arquivo apenas do repositório e não do work directory.
 > git rm --cached <file>
+
+Clonar uma branch específica
+> git clone --single-branch -b <branch_name> <url>
