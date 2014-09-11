@@ -2,6 +2,9 @@
 Just basic stuff to making Windows more friendly.
 
 ## PowerShell Customization
+
+### Modules
+
 In the PowerShell, execute the command bellow to install a package manager.
 
 ```bash
@@ -13,4 +16,21 @@ branch nicely.
 
 ```bash
 Install-Module posh-git
+```
+
+### PATH
+
+To change the default display path, go to the PowerShell Profile file and insert
+this code bellow.
+
+```bash
+function global:prompt {
+   $realLASTEXITCODE = $LASTEXITCODE
+   $Host.UI.RawUI.ForegroundColor = $GitPromptSettings.DefaultForegroundColor
+   $p = Split-Path -leaf -path (Get-Location)
+   Write-Host("~ $p") -nonewline
+   Write-VcsStatus
+   $global:LASTEXITCODE = $realLASTEXITCODE
+   return " $ "
+}
 ```
