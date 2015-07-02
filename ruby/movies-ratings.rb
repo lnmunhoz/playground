@@ -34,6 +34,7 @@ while running
 
   when "Delete" then
     if movies[movie.to_sym]
+      movie = gets.chomp
       movies.delete(movie.to_sym)
       puts "Movie deleted succefully!"
     else
