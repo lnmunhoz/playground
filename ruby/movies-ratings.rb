@@ -33,8 +33,9 @@ while running
     end
 
   when "Delete" then
+    print "What movie do you want to delete: "
+    movie = gets.chomp
     if movies[movie.to_sym]
-      movie = gets.chomp
       movies.delete(movie.to_sym)
       puts "Movie deleted succefully!"
     else
