@@ -12,7 +12,7 @@ while running
     print "Movie name: "
     movie = gets.chomp
     if movies[movie.to_sym]
-      puts "This movie is already added. You can just Updare or Delete it."
+      puts "This movie is already added. You can just Update or Delete it."
     else
       print "Movie rating: "
       rating = gets.chomp
