@@ -1,0 +1,30 @@
+
+
+<div class="">
+  New Todo: {{newTodo}}
+</div>
+
+<div class="">
+  {{input type='text' value=newTodo action='create'}}
+</div>
+
+<div class="">
+  <ul>
+    {{#each}}
+      <li>
+        {{this.text}}
+        {{input type='checkbox' checked=this.isChecked }}
+        <button name="delete" {{action 'delete' this}}>Delete</button>
+        </li>
+    {{/each}}
+  </ul>
+</div>
+
+<div class="">
+  Todos Checked: {{todosChecked}}
+</div>
+
+
+
+
+{{outlet}}
