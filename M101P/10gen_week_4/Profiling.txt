@@ -1,0 +1,15 @@
+system.profile - > more sofisticated log feature
+
+0 -> Off
+1 -> Log slow Queries
+2 -> Log All Queries
+
+mongod --profile 1 --slowms 2 (log slow queries) (above two miliseconds)
+
+> db.system.profile.find()
+
+--Commands--
+> db.getProfilingLevel()
+> db.getProfilinnLegel(1, 4) slow queries above 4 miliseconds
+
+> db.getProfilingStatus(1, 4)

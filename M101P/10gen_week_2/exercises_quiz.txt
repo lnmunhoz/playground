@@ -1,0 +1,58 @@
+[--Exercicio QUIZ--]
+
+Suppose a simple e-commerce product catalog called catalog with documents that look like this:
+{ product : "Super Duper-o-phonic", 
+  price : 100000000000,
+  reviews : [ { user : "fred", comment : "Great!" , rating : 5 },
+              { user : "tom" , comment : "I agree with Fred, somewhat!" , rating : 4 } ],
+  ... }
+  
+ Write a query that finds all products that cost more than 10,000 and that have a rating of 5 or better.
+    >> db.catalog.find( { 'price': { $gt : 10000 } ,
+                    "reviews.rating" : { $gte : 5 } } )
+                  
+[--Exercicio QUIZ--]
+Write a query that retrieves exam documents,
+sorted by score in descending order, skipping the first 50 
+and showing only the next 20.
+
+db.scores.find( { 'type' : 'exam' } )
+                .sort( { 'score' : -1 } )
+                .skip(50)
+                .limit(20)
+                
+[--Exercicio Quiz--]
+Given the document
+{'username':'splunker', 'country':'US', 'phone':'718-343-3433'}
+in the collection users, write the shell command for updating 
+the country to 'RU' for only this user.
+
+    >>  db.users.update({'username' : 'splunker' }, { $set : { 'country' : 'RU' } })
+
+[--Exercicio Quiz--]
+Write an update query that will unset the interests key in the following document
+in the collection users. The primary key is username.
+{'username':'jimmy', favorite_color:'blue', interests:['debating', 'politics']}
+    >> db.users.update({'username' : 'jimmy'   } , { $unset : { interests : 1}  })
+  
+[--Exercicio Quiz--]  
+Recall the schema of the scores collection:
+{
+  "_id" : ObjectId("50844162cb4cf4564b4694f8"),
+	"student" : 0,
+	"type" : "exam",
+	"score" : 75
+}
+How would you give every record whose score was less than 70 an extra 20 points?
+  >>db.scores.update({'score' : {$lt : 70}} , {$inc : {'score' : 20}} ,{multi : true})
+  
+[--Exercicio Quiz--]    
+Recall the schema of the scores collection:
+{
+  "_id" : ObjectId("50844162cb4cf4564b4694f8"),
+	"student" : 0,
+	"type" : "exam",
+	"score" : 75
+}
+How would you delete every record whose score was less than 60
+  >>db.scores.remove({ 'score' : { $lt : 60 } } )

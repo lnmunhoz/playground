@@ -1,0 +1,18 @@
+--Agregation Pipeline--
+
+Stages :
+(not exactly in this order)
+
+  $project -> will select out wich keys you're interested in. It could also reshape the document. [1:1]
+  
+  $match -> filter. [n:1]
+  
+  $group -> aggregation. [n:1]
+  
+  $sort -> [1:1]
+  
+  $skip -> [n:1]
+  
+  $limit -> [n:1}
+  
+  $unwind -> for each document in array, will produce a new document. [1:n]

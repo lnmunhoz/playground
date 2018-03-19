@@ -1,0 +1,30 @@
+﻿CRUD and the Mongo Shell
+
+C - Create -> Insert 
+R - Read -> Find
+U - Update -> Update
+D - Delete -> Remove
+
+One thing that's important to know about MongoDB is that CRUD 
+operations, and indeed, all operations that manipulate data in
+the database, exists as methods or functions in programming lan-
+guage API's.
+MongoDB does not have its own query language analogous to the SQL
+language that needs to be expressed as a string embedded inside
+a program. Instead, MongoDB has a wire protocol, which is relatively
+simple, that incorporates an operation code and arguments to that
+operation, transmitted as a sequence of bytes over the network.
+From a programmer's perspective, you instead manipulate documents 
+in the database using methods on objects or functions if the language
+isn't object-oriented, and those methods transmit data over the network according to the wire protocol.
+
+
+Uma coisa importante para saber sobre o MongoDB é que, operações
+CRUD, de fato, sao todas operações para manipular dados no banco de dados
+com métodos ou funções das API's.
+MongoDB não tem sua própria linguagem para realizar querys como o SQL, que precisa
+que sejam feitas strings no programa. Em vez disso, MongoDB possui um "Wire Protocol",
+que é relativamente simples, que incorpora as operações de código e argumentos para essa operação,
+transmitindo uma sequencia de bytes pela rede. Do ponto de vista dos programadores,  você manipula
+documentos no banco de dados usando métodos nos objetos, ou funções se a sua linguagem não é orientada
+a objeto, e estes métodos enviam dados pela rede.

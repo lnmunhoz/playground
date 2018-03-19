@@ -1,0 +1,28 @@
+[--Querying Cursors--]
+
+Apontando para o cursor e null para não printar nada na tela.
+    >>cursor = db.people.find(); null;
+    
+    Oba : O "null" evita que a query seja enviada para o db, indicando que
+    você ainda irá acrecentar operações.
+
+Retorna um bool se o cursor tem um próximo elemento.
+    >>cursor.hasNext()
+    
+Retorna o próximo elemento do cursor
+    >>cursos.next()
+    
+Especificando limite de documentos retornados para o cursor.
+    >> cursor = db.scores.find() ; null;
+    >> cursor.limit(5) ;    
+    
+Especificando para o cursor retornar uma key ordenadaem ordem reversa
+    >> cursor = db.scores.find() ; null
+    >> cursor.sort( { 'student' : -1 } )
+
+Especificando documentos para pular.
+    >> cursor = db.scores.find().skip(5)
+    
+Obs: No servidor, a ordem de processamento dessas operações é :
+    Sort -> Skip -> Limit
+Elas não são processadas pelo client(), apenas pelo servidor

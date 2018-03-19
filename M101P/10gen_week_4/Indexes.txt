@@ -1,0 +1,57 @@
+To create indexes
+
+--Ascending Index--
+> db.collection.ensureIndex({"foo" : 1}) 
+
+--Descending Index--
+> db.collection.ensureIndex({"foo" : -1})
+
+To find all indexes in database
+> db.system.indexes.find()
+
+To find indexes of a collection
+> db.collection.getIndexes()
+
+To drop a index
+> db.collection.dropIndex({"foo" : 1})
+
+--Multikey Indexes--
+In case of creating an index for an array
+Rather then mongodb create just one index, will be created one
+index point for every item in the array.
+
+--Index Creation option {unique}--
+> db.collection.ensureIndex({"thing" : 1}, {unique : true})
+
+Now, i insert something, like...
+> db.collection.insert({"thing" : "apple"})
+
+if i try to insert an apple again in this collection, i will get an error, 
+because this key "thing" is unique and cannot have duplicated values.
+
+--Index Creation option {unique, dropDups}--
+dropDups will remove all documents with duplicate keys in the index of i'm trying to create. To specify dropDups:
+> db.collection.insert({"thing" : 1},{unique : true, dropDups : true})
+
+--Sparse Indexes--
+Will only index the documents who have's deteminated key
+> db.collection.ensureIndex({'foo' : 1}, {'sparse' : true})
+if the key 'foo' isn't present in all documents, in case of a query like :
+> db.collection.find().sort({'d' : 1})
+will return just the docuements where this key is present.
+
+
+--$natural--
+brings the documents in the order of they are in disk.
+
+--regex and indexes--
+regex will just work if ^abc, for example. The index needs the begin of the document.
+
+--Geospacial Indexes--
+2D:{ _id : 1, 
+    location : [x, y] }
+> db.collection.ensureIndex({'location' : '2d'})
+>find({location : {$near : [x,  y]}})
+
+
+

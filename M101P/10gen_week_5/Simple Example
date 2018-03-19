@@ -1,0 +1,18 @@
+Document:
+{ _id : ,
+  name: ,
+  brand: ,
+  category: ,
+  price: ,
+            }
+
+
+Note: $group makes an upsert.
+
+sum the number of products by category:
+> db.products.aggregate([{$group : {
+                                      '_id' : '$category',
+                                      'num_products' : {'$sum' : 1}}
+                                      }])
+                                    
+                                

@@ -1,0 +1,16 @@
+--Aggregation Expressions Overview--
+
+Expressions for the $group stage:
+
+$sum -> count values, or amount
+$avg -> can average the values of a key across documents
+$min -> will find the minimum value of a document of a certain key
+$max -> will find the maximum value of a document of a certain key
+
+$push -> build an array
+$addToSet -> build an array of unique vlaues
+
+$first -> find the first value for a key in the process
+$last -> find the last value for a key in the agrregation process
+
+Obs : $first and $last must be used in conjunction with sort to make sense.

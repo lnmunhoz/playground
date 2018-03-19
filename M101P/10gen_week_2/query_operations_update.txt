@@ -1,0 +1,22 @@
+[--Updating Documents--]
+
+
+>> db.test.update({  criteria  },  { update infos })
+
+O método update substitui tudo que há no documentos pelos valores inseridos na operação
+o único valor que não é perdido é o "_id"
+
+Para criar novas keys no documento:
+No caso, se o documento já possuir a key, irá apenas atualiza-la.
+  >> db.people.find( { 'name' : 'Lucas' }, $set{ age : 20 } )
+  
+  
+Para incrementar um valor em uma key, usa-se $inc, esta operação abaixo incrementa 1 na key 'age.
+>> db.test.update( {'foo' : 'bar'} , { $inc : { 'age' : 1 } } )  
+  
+  
+  
+  
+Para dar update em todos, deixar o primeiro argumento vazio e ecpecificar o multi.
+>> db.test.update( {} , { update infos} , {multi : true} )
+
