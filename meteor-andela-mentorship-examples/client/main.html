@@ -1,0 +1,22 @@
+<head>
+  <title>andela-mentorship</title>
+</head>
+
+<body>
+  <h1>Welcome to Meteor!</h1>
+
+  <h2> Books </h2>
+  {{> books}}
+</body>
+
+<template name="books">
+  {{#if Template.subscriptionsReady}}
+    {{#each books}}
+      <li>{{this.name}}</li>
+    {{else}}
+      <p> There's no books in the database :( </p>
+    {{/each}}
+  {{else}}
+    Loading books data...
+  {{/if}}
+</template>
