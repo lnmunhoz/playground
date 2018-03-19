@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html ng-app="gemStore">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>GemStore</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="css/app.css" rel="stylesheet">
+</head>
+<body ng-controller="StoreController as store">
+
+<div class="container store">
+    <header>
+        <h2 class="text-center">GemStore Application</h2>
+    </header>
+
+    <button class="btn btn-default" ng-click="store.previousProduct()">
+        <span class="glyphicon glyphicon-arrow-left " ></span>
+    </button>
+
+    <button class="btn btn-default pull-right" ng-click="store.nextProduct()">
+        <span class="glyphicon glyphicon-arrow-right" ></span>
+    </button>
+
+    <div class="list-group">
+        <div class="list-group-item" ng-show="store.currentProduct === $index" ng-repeat="product in store.products" >
+            <!-- Product content -->
+            {{product.name}} <div class="pull-right">{{product.price | currency}}</div>
+            <product-images></product-images>
+            <product-tabs></product-tabs>
+
+        </div>
+    </div>
+</div>
+
+<script src="js/angular.min.js"></script>
+<script src="directives/store-directives.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
