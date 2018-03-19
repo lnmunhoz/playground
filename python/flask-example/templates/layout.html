@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="static/css/foundation.css" />
+	{% block head %}
+	<title>{%block title %} Index {% endblock %} </title>
+	{% endblock %}
+</head>
+<body>
+	<nav class="top-bar" data-topbar>
+		
+		<section class="top-bar-section">
+			<!-- Left Nav Section -->
+			<ul class="left">
+				<li><a href="index">Home</a></li>
+			</ul>
+			<ul class="left">
+				<li><a href="about">About</a></li>
+			</ul>
+		</nav>
+	</section>
+
+	<div id="content">{% block content %} <h1>Content</h1> {% endblock %} </div>
+
+	<script src="static/js/jquery.js"></script>
+	<script src="static/js/foundation.min.js"></script>
+</body>
+<script>
+	$(document).foundation();
+</script>
+</html>
