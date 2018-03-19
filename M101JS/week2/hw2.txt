@@ -1,0 +1,8 @@
+group = {$group : {_id : '$State', 'Temperature' : {'$max': '$Temperature'}}}
+var aggregate = db.data.aggregate(group);
+var documents = aggregate.result;
+for(var i = 0; i < documents.length ; i++){
+    db.data.update({'State' : documents[i]['_id'], 'Temperature' : documents[i]['Temperature']},
+                   {$set : {'month_high' : true}},
+                   {multi : 1})
+}

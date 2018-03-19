@@ -1,0 +1,5 @@
+mongoimport --type csv --headerline weather_data.csv -d weather -c data
+
+use weather
+query = { '$and' : [{'Wind Direction' : {$gte : 180}}, {'Wind Direction' : {$lte : 360}}]}
+db.data.find(query).sort({Temperature : 1}).limit(5).pretty()

@@ -1,0 +1,14 @@
+var aggregate = db.students.aggregate([
+{$unwind : '$scores'},
+{$match : {'scores.type' : 'homework'}},
+{$group : {'_id' : '$_id', 'lowest_score_hw' : {'$min' : '$scores.score'}}},
+{$sort : {'_id' : 1}}
+])
+
+var documents = aggregate.result
+for(var i = 0 ; i < documents.length ; i++){
+    var query = {'_id' : documents[i]['_id']};
+    var arrayQuery = {'score' : documents[i]['lowest_score_hw']};
+    var update =  {'$pull' : {'scores' : arrayQuery }};
+    db.students.update(query, update, {'multi' : 1})
+}
