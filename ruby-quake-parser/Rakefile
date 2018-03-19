@@ -1,0 +1,8 @@
+task default: %w[test]
+
+task :test do
+  ruby "tests/unit/test_game_spec.rb"
+  ruby "tests/unit/test_kill_spec.rb"
+  ruby "tests/unit/test_line_spec.rb"
+  ruby "tests/integration/test_parser_spec.rb"
+end
