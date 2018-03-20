@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>D3</title>
+</head>
+<body>
+  
+
+  
+  <button id="forceCenter"> forceCenter </button>
+
+  <div>
+    <svg width="500" height="500">
+      <!-- <circle style="fill:steelblue;"></circle>
+        <circle style="fill:steelblue;"></circle>
+        <circle style="fill:steelblue;"></circle> -->
+    </svg>
+  </div>
+
+  <div id="controls">
+    <div id="ticks"> Ticks:
+      <span id="ticks-value">0</span>
+
+      <div>
+        <label for="strength">Strength</label>
+        <input name="strength" type="number" value="-30" />
+      </div>
+      
+    </div>
+  </div>
+  
+  
+
+  <!-- <ul id="example"> -->
+    <!-- <li></li>
+    <li></li>
+    <li></li> -->
+  <!-- </ul> -->
+
+  <script src="https://d3js.org/d3.v4.min.js"></script>
+</body>
+  <script>
+    const helpers = {
+      isOdd: (n) => {
+        return Math.ceil(n) % 2 === 0;
+      }
+    }
+
+    const config = {
+      strength: -30
+    }
+
+    const strengthInput = document.getElementsByName('strength');
+
+    strengthInput[0].addEventListener('input', event => {
+      config.strength = event.target.value
+      console.log(config)
+    })
+
+    
+
+    const updateUI = () => {
+      const ticksEl = document.getElementById('ticks-value');
+      ticksEl.innerHTML = parseInt(ticksEl.innerHTML) + 1
+
+    }
+ 
+
+    // const circle = d3.selectAll('circle');
+    // circle.style('fill', 'steelblue');
+    // circle.attr('r', 30)
+    // circle.data([32, 57, 112, 293]);
+    // circle.attr('r', (n) => Math.sqrt(n));
+    // circle.attr("cx", function (d, i) { return i * 100 + 30; });
+    // circle.attr('cy', 60)
+
+    // const div = d3.select('div');
+    //  var circle = div.selectAll("div")
+    //   .data([32, 57, 293, 200], function (d) { return d; });
+
+    // circle.enter().append("div")
+    //   .style("width", function (d, i) { return `${i * 100 + 30}px`; })
+    //   .style("height", function (d, i) { return `${i * 100 + 30}px`; })
+    //   .style("background-color", function (d, i) { return 'green'; })
+    //   .style('margin', '2px')
+
+    // const multiples = [5, 10, 15, 20, 25]
+
+    // const container = d3.select('#example');
+    // const items = container.selectAll('li');
+    // const selection = items.data(multiples)
+    // selection.enter().append('li').text(d => d)
+    
+    // container.selectAll('li')
+    //   .data([1, 2, 3])
+    //   .exit()
+    //   .remove()
+      // .append('li')
+      // .text(d => d)
+
+    
+    // const newMultiples = [1, 2, 3, 4, 5, 6];
+
+    // items.data(newMultiples)
+    //      .exit().append('li').text(d => d)
+
+    // var div = d3.select("body")
+    //     .selectAll("div")
+    //     .data([1, 2, 3, 4, 5])
+    //     .enter().append("div")
+    //     .text(function (d) { return d; });
+
+    // div = div.data([5 ,6, 7, 8, 9], function (d) { return d; });
+    // div.exit().remove();
+    // div.enter().append('div').text(function (d) { return d; });
+    
+
+    // Force simulation
+    const width = 500;
+    const height = 500;
+    const nodes = [{}, {}, {}, {}, {}, {}];
+
+
+    var numNodes = 100;
+    const nodesList = d3.range(numNodes).map((d) => {
+      const radius = Math.random() * 25;
+      return {
+        radius,
+        color: helpers.isOdd(radius) ? 'green' : 'blue',
+        xCenterByColor: {
+          green: 1,
+          blue: 10,
+        }
+      }
+    })
+
+
+    const simulation = d3.forceSimulation(nodesList)
+      .force('charge', d3.forceManyBody().strength(3))
+      // why this is dividing by 2? what is the formula?
+      .force('center', d3.forceCenter(width / 2, height / 2))
+      .force('collision', d3.forceCollide().radius(d => d.radius))
+      .force('x', d3.forceX().x(d => 20 * d.xCenterByColor[d.color]))
+      // .force('x', d3.forceY().y(d => -(20 * d.radius)))
+      
+      .on('tick', ticked);
+
+    function ticked() {
+        
+
+
+        var u = d3.select('svg')
+          .selectAll('circle')
+          .data(nodesList)
+
+        u.enter()
+          .append('circle')
+          .attr('r', d => d.radius)
+          .style('fill', d => d.color)
+          .merge(u)
+          .attr('cx', function (d) {
+            return d.x
+          })
+          .attr('cy', function (d) {
+            return d.y
+          })
+
+        u.exit().remove()
+
+        updateUI()
+      }
+
+  </script>
+</html>
