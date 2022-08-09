@@ -1,0 +1,1 @@
+-[Exercises](https://github.com/TheOdinProject/ruby-exercises/tree/main/ruby_basics)
