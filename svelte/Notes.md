@@ -103,3 +103,5 @@ Instead, use `array = [...array, newItem]` for example.
 
 <button on:click={increment}>Increment</button>
 ```
+
+or can be used as `await tick()` inside an async function.
