@@ -105,3 +105,42 @@ Instead, use `array = [...array, newItem]` for example.
 ```
 
 or can be used as `await tick()` inside an async function.
+
+## Dispatching events from component
+
+Counter.svelte
+
+```svelte
+
+<script>
+	import { createEventDispatcher } from 'svelte'
+
+	let count = 0
+
+	const dispatch = createEventDispatcher()
+
+	$: dispatch('countChanged', count)
+
+	function increment() {
+		count += 1;
+	}
+</script>
+<button on:click={increment}>Increment</button> {count}
+
+```
+
+App.svelte
+
+```svelte
+<script>
+	import { tick } from 'svelte';
+	import Counter from './Counter.svelte'
+
+	function onCountChange(value) {
+		console.log('onCountChange: ', value)
+	}
+
+</script>
+
+<Counter on:countChanged={onCountChange} />
+```

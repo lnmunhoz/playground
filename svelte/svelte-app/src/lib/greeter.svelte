@@ -1,8 +1,12 @@
 <script lang="ts">
 	export let firstName: string;
 	export let lastName: string;
+	export let onNameChange: (name: string) => void;
 
 	$: fullName = firstName + ' ' + lastName;
+
+	// Calling function when fullName has changed using reactive variable fullName
+	$: onNameChange(fullName);
 
 	function changeFirstName(event: KeyboardEvent) {
 		firstName = (event.target as HTMLInputElement).value;
